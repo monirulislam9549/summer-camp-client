@@ -1,11 +1,5 @@
-import React from "react";
-
 const App = () => {
-  return (
-    <div>
-      <h1 className="text-5xl">HEllo</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default App;
