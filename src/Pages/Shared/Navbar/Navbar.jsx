@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="flex flex-wrap place-items-center fixed">
@@ -47,9 +52,17 @@ const Navbar = () => {
                   <Link className="hover:text-gray-200">Contact Us</Link>
                 </li>
                 <li>
-                  <Link to="/login" className="hover:text-gray-200">
-                    Login
-                  </Link>
+                  {user ? (
+                    <>
+                      <Link onClick={handleLogOut}>Log Out</Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/login" className="hover:text-gray-200">
+                        Login
+                      </Link>
+                    </>
+                  )}
                 </li>
               </ul>
 

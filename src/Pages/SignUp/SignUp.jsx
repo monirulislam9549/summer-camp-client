@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 // const image_hosting_key = import.meta.env.VITE_Image_Upload_token;
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const { updateUserProfile, createUser } = useContext(AuthContext);
   const {
     register,
@@ -44,7 +45,7 @@ const SignUp = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                //   navigate("/");
+                navigate("/");
               }
             });
         });
