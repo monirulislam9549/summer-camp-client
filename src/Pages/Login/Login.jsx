@@ -1,4 +1,23 @@
+import { useContext } from "react";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
+
 const Login = () => {
+  const { SignIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email, password);
+    SignIn(email, password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    });
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -12,15 +31,17 @@ const Login = () => {
             </p>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  name="email"
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -28,20 +49,25 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  name="password"
+                  type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Login"
+                />
               </div>
-            </div>
+            </form>
+            <p>
+              <Link to="/signup">New Here? Please Sign Up</Link>
+            </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
