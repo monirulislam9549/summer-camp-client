@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="flex flex-wrap place-items-center bg-opacity-30 fixed z-10  bg-black text-white">
-        <section className="relative mx-auto">
+        <section className="mx-auto">
           {/* <!-- navbar --> */}
           <nav className="flex justify-between bg-gray-900 text-white w-screen ">
             <div className="px-5 xl:px-12 py-4 flex w-full items-center">
@@ -41,7 +41,9 @@ const Navbar = () => {
                   <Link className="hover:text-gray-200">Instructors</Link>
                 </li>
                 <li>
-                  <Link className="hover:text-gray-200">Classes</Link>
+                  <Link to="/classes" className="hover:text-gray-200">
+                    Classes
+                  </Link>
                 </li>
                 <li>
                   <Link to="/dashboard" className="hover:text-gray-200">

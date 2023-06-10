@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle";
 import ClassCard from "../ClassCard/ClassCard";
 
-const PopularClasses = () => {
+const AllClasses = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/classes")
@@ -30,4 +30,4 @@ const PopularClasses = () => {
   );
 };
 
-export default PopularClasses;
+export default AllClasses;
