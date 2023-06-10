@@ -1,0 +1,44 @@
+[
+  {
+    "image": "https://i.ibb.co/m9f5LY9/youth-summer-sports-camp-west-essex-county-nj.jpg",
+    "name": "Course A",
+    "instructor": "John Smith",
+    "available_seats": 10,
+    "price": 50
+  },
+  {
+    "image": "https://i.ibb.co/Yk5ny9R/benefits-of-sports-summer-camp-1-min-1280x720.jpg",
+    "name": "Course B",
+    "instructor": "Jane Johnson",
+    "available_seats": 5,
+    "price": 75
+  },
+  {
+    "image": "https://i.ibb.co/CBGfHv3/2014-06-24-AOF-9024-RGB.jpg",
+    "name": "Course C",
+    "instructor": "Michael Brown",
+    "available_seats": 8,
+    "price": 90
+  },
+  {
+    "image": "https://i.ibb.co/gW6nSDq/download-4.jpg",
+    "name": "Course D",
+    "instructor": "Emily Davis",
+    "available_seats": 12,
+    "price": 60
+  },
+  {
+    "image": "https://i.ibb.co/WzGZQsP/20220920-546-COG-WEB-Thornlie-Leisure-Centre.jpg",
+    "name": "Course E",
+    "instructor": "Robert Wilson",
+    "available_seats": 3,
+    "price": 120
+  },
+  {
+    "image": "https://i.ibb.co/Q67r3wX/Kids-Sport-Summer-Camp.jpg",
+    "name": "Course F",
+    "instructor": "Sarah Thompson",
+    "available_seats": 15,
+    "price": 40
+  }
+]
