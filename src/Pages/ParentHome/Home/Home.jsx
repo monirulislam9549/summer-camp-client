@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import PopularClasses from "../PopularClasses/PopularClasses";
-import ClassCard from "../ClassCard/ClassCard";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
+import ExtraSection from "../ExtraSection/ExtraSection";
 
 const Home = () => {
   return (
@@ -14,6 +14,7 @@ const Home = () => {
         <Banner></Banner>
         <PopularClasses></PopularClasses>
         <PopularInstructors></PopularInstructors>
+        <ExtraSection></ExtraSection>
       </>
     </div>
   );
