@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Jane Johnson",
+    "image": "https://i.ibb.co/fFvrZKJ/images.jpg",
+    "email": "janejohnson@example.com",
+    "rating": 4.5
+  },
+  {
+    "name": "John Smith",
+    "image": "https://i.ibb.co/LPChvCv/size1.jpg",
+    "email": "johnsmith@example.com",
+    "rating": 4.0
+  },
+  {
+    "name": "Michael Brown",
+    "image": "https://i.ibb.co/ZzDMZ28/download-5.jpg",
+    "email": "michaelbrown@example.com",
+    "rating": 3.5
+  },
+  {
+    "name": "Michael Crown",
+    "image": "https://i.ibb.co/d5Pj1b0/KH-300-BKids-040819-1260x630.jpg",
+    "email": "michaelcrown@example.com",
+    "rating": 3.5
+  }
+]

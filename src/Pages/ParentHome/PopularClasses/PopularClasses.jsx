@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle";
+import ClassCard from "../ClassCard/ClassCard";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -8,6 +9,7 @@ const PopularClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);
+        // console.log(data);
       });
   }, []);
   return (
@@ -18,6 +20,12 @@ const PopularClasses = () => {
         }
         title={"Our Popular Classes"}
       ></SectionTitle>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {classes.map((classs) => (
+          <ClassCard classs={classs} key={classs._id}></ClassCard>
+        ))}
+      </div>
     </section>
   );
 };
