@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile">
@@ -16,10 +18,7 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 text-base-content">
           {/* Sidebar content here */}
           <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
+            <NavLink to="/dashboard/userhome">User Home</NavLink>
           </li>
         </ul>
       </div>
