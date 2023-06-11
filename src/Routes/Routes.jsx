@@ -7,6 +7,7 @@ import Dashboard from "../Layout/Dashboard";
 import ClassItem from "../Pages/ClassItem/ClassItem";
 import MyEnrolledClass from "../Pages/Dashboard/UserHome/MyEnrolledClass";
 import MySelectedClass from "../Pages/Dashboard/UserHome/MySelectedClass";
+import MyPaymentHistory from "../Pages/Dashboard/UserHome/MyPaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "enrolled",
         element: <MyEnrolledClass></MyEnrolledClass>,
+      },
+      {
+        path: "payment",
+        element: <MyPaymentHistory></MyPaymentHistory>,
       },
     ],
   },

@@ -1,7 +1,10 @@
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { MdPayment } from "react-icons/md";
+import useSelect from "../hooks/useSelect";
 
 const Dashboard = () => {
+  const [select] = useSelect();
   return (
     <div>
       <div className="drawer">
@@ -26,7 +29,21 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div className="flex-1 px-2 mx-2">Navbar Title</div>
+            <div className="flex-1 px-2 mx-2">
+              <Link
+                to="/"
+                className="flex items-center justify-center
+               text-xl font-bold font-heading"
+              >
+                <img
+                  className="w-12 rounded-full mr-3"
+                  src={`https://i.ibb.co/kq9n0wJ/Screenshot-2023-06-09-142041.png`}
+                  alt=""
+                />
+                {/* Logo Here. */}
+                <p>CampWonderland</p>
+              </Link>
+            </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {/* Navbar menu content here */}
@@ -34,12 +51,21 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/selected">
                     My Select Class
                     <FaRegBookmark></FaRegBookmark>
+                    <span className="badge badge-secondary">
+                      +{select?.length || 0}
+                    </span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/enrolled">
                     My Enrolled Class
                     <FaBookmark></FaBookmark>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/payment">
+                    Payment History
+                    <MdPayment></MdPayment>
                   </NavLink>
                 </li>
               </ul>
