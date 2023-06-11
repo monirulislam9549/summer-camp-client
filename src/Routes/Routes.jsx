@@ -10,6 +10,7 @@ import MySelectedClass from "../Pages/Dashboard/UserHome/MySelectedClass";
 import MyPaymentHistory from "../Pages/Dashboard/UserHome/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import AllUser from "../Pages/Dashboard/AdminHome/AllUser";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ export const router = createBrowserRouter([
       {
         path: "manageUsers",
         element: <AllUser></AllUser>,
+      },
+      //
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
     ],
   },

@@ -1,25 +1,30 @@
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useSelect = () => {
-  const { user } = useContext(AuthContext);
-  const token = localStorage.getItem("access-token");
+  const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
   const { refetch, data: select = [] } = useQuery({
     queryKey: ["select", user?.email],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/selects?email=${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      );
-      return res.json();
+      const res = await axiosSecure(`/selects?email=${user?.email}`);
+      return res.data;
     },
+    // queryFn: async () => {
+    //   const res = await fetch(
+    //     `http://localhost:5000/selects?email=${user?.email}`,
+    //     {
+    //       headers: {
+    //         authorization: `bearer ${token}`,
+    //       },
+    //     }
+    //   );
+
+    //   return res.json();
+    // },
   });
-  return [select, refetch];
+  return [select, refetch, axiosSecure];
 };
 
 export default useSelect;

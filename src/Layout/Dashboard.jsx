@@ -9,12 +9,14 @@ import { MdPayment } from "react-icons/md";
 import useSelect from "../hooks/useSelect";
 import { FcHome } from "react-icons/fc";
 import { SiGoogleclassroom } from "react-icons/si";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [select] = useSelect();
 
-  const isAdmin = true;
+  // const isAdmin = true;
   const isInstructor = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div>
