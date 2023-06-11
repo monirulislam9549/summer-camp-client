@@ -9,6 +9,7 @@ import MyEnrolledClass from "../Pages/Dashboard/UserHome/MyEnrolledClass";
 import MySelectedClass from "../Pages/Dashboard/UserHome/MySelectedClass";
 import MyPaymentHistory from "../Pages/Dashboard/UserHome/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
+import AllUser from "../Pages/Dashboard/AdminHome/AllUser";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <MyPaymentHistory></MyPaymentHistory>,
+      },
+      {
+        path: "manageUsers",
+        element: <AllUser></AllUser>,
       },
     ],
   },
