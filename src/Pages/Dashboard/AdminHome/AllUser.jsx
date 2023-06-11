@@ -1,11 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllUser = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
+
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          toast(`${user.name} is now admin`);
+        }
+      });
+  };
+
   return (
     <div>
       <Helmet>
@@ -30,14 +46,26 @@ const AllUser = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button className="btn btn-sm">Make Admin</button>
-                  <button className="btn btn-sm">Make Instructor</button>
+                  <button
+                    onClick={() => handleMakeAdmin(user)}
+                    disabled={user.role === "admin"}
+                    className="btn btn-sm"
+                  >
+                    Make Admin
+                  </button>
+                  <button
+                    disabled={user.role !== "instructor"}
+                    className="btn btn-sm"
+                  >
+                    Make Instructor
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
