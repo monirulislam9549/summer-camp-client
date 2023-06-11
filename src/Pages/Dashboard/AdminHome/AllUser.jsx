@@ -9,6 +9,7 @@ const AllUser = () => {
     return res.json();
   });
 
+  //   make user to admin
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
@@ -18,6 +19,19 @@ const AllUser = () => {
         if (data.modifiedCount) {
           refetch();
           toast(`${user.name} is now admin`);
+        }
+      });
+  };
+  //  make user to instructor
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          toast(`${user.name} is now instructor`);
         }
       });
   };
@@ -54,7 +68,8 @@ const AllUser = () => {
                     Make Admin
                   </button>
                   <button
-                    disabled={user.role !== "instructor"}
+                    onClick={() => handleMakeInstructor(user)}
+                    disabled={user.role === "instructor"}
                     className="btn btn-sm"
                   >
                     Make Instructor
