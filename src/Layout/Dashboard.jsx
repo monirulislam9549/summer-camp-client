@@ -10,13 +10,13 @@ import useSelect from "../hooks/useSelect";
 import { FcHome } from "react-icons/fc";
 import { SiGoogleclassroom } from "react-icons/si";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const [select] = useSelect();
 
-  // const isAdmin = true;
-  const isInstructor = true;
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div>
