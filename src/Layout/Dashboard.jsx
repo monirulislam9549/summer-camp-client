@@ -1,10 +1,21 @@
-import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import {
+  FaBookOpen,
+  FaBookmark,
+  FaRegBookmark,
+  FaUserAlt,
+} from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
 import useSelect from "../hooks/useSelect";
+import { FcHome } from "react-icons/fc";
+import { SiGoogleclassroom } from "react-icons/si";
 
 const Dashboard = () => {
   const [select] = useSelect();
+
+  const isAdmin = true;
+  const isInstructor = true;
+
   return (
     <div>
       <div className="drawer">
@@ -47,27 +58,67 @@ const Dashboard = () => {
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {/* Navbar menu content here */}
-                <li>
-                  <NavLink to="/dashboard/selected">
-                    My Select Class
-                    <FaRegBookmark></FaRegBookmark>
-                    <span className="badge badge-secondary">
-                      +{select?.length || 0}
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/enrolled">
-                    My Enrolled Class
-                    <FaBookmark></FaBookmark>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/payment">
-                    Payment History
-                    <MdPayment></MdPayment>
-                  </NavLink>
-                </li>
+                {isAdmin ? (
+                  <>
+                    <li>
+                      <NavLink to="/dashboard/adminHome">
+                        Admin Home
+                        <FcHome></FcHome>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard/manageClass">
+                        Manage Classes
+                        <SiGoogleclassroom></SiGoogleclassroom>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard/manageUsers">
+                        Manage Users
+                        <FaUserAlt></FaUserAlt>
+                      </NavLink>
+                    </li>
+                  </>
+                ) : isInstructor ? (
+                  <>
+                    <li>
+                      <NavLink to="/dashboard/addClass">
+                        Add Class
+                        <FaBookOpen></FaBookOpen>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard/myClass">
+                        My Class
+                        <FaBookmark></FaBookmark>
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <NavLink to="/dashboard/selected">
+                        My Select Class
+                        <FaRegBookmark></FaRegBookmark>
+                        <span className="badge badge-secondary">
+                          +{select?.length || 0}
+                        </span>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard/enrolled">
+                        My Enrolled Class
+                        <FaBookmark></FaBookmark>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard/payment">
+                        Payment History
+                        <MdPayment></MdPayment>
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
