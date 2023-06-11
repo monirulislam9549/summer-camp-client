@@ -10,8 +10,7 @@ const ClassCard = ({ classs }) => {
   const [, refetch] = useSelect();
   // const navigate = useNavigate();
 
-  const handleAddToSelect = (classs) => {
-    console.log(classs);
+  const handleAddToSelect = () => {
     if (user && user.email) {
       const selectClass = {
         selectClassId: _id,
