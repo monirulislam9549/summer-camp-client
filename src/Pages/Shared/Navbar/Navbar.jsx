@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useSelect from "../../../hooks/useSelect";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [select] = useSelect();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -43,10 +45,16 @@ const Navbar = () => {
                 <li>
                   <Link to="/classes" className="hover:text-gray-200">
                     Classes
+                    <div className="badge badge-secondary">
+                      +{select?.length || 0}
+                    </div>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="hover:text-gray-200">
+                  <Link
+                    to="/dashboard/selected"
+                    className="hover:text-gray-200"
+                  >
                     Dashboard
                   </Link>
                 </li>
