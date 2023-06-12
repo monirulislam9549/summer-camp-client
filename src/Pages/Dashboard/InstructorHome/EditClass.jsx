@@ -13,7 +13,7 @@ const EditClass = () => {
       price,
       available_seats,
     };
-    fetch(`http://localhost:5000/editClasses/${id}`, {
+    fetch(`https://summer-school-server-kappa.vercel.app/editClasses/${id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updateData),

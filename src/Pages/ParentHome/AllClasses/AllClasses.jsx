@@ -5,7 +5,7 @@ import ClassCard from "../ClassCard/ClassCard";
 const AllClasses = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://summer-school-server-kappa.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);

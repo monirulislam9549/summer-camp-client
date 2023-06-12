@@ -6,7 +6,9 @@ const ManageClass = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/classes");
+        const response = await axios.get(
+          "https://summer-school-server-kappa.vercel.app/classes"
+        );
         const data = response.data;
         setAllClasses(data);
       } catch (error) {

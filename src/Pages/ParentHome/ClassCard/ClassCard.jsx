@@ -20,7 +20,7 @@ const ClassCard = ({ classs }) => {
         price,
         instructor,
       };
-      fetch("http://localhost:5000/selects", {
+      fetch("https://summer-school-server-kappa.vercel.app/selects", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(selectClass),

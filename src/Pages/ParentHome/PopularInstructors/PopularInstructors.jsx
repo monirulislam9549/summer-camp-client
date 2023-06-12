@@ -4,7 +4,7 @@ import InstructorsCard from "../InstructorsCard/InstructorsCard";
 
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
-  fetch("http://localhost:5000/instructors")
+  fetch("https://summer-school-server-kappa.vercel.app/instructors")
     .then((res) => res.json())
     .then((data) => setInstructors(data));
   return (
