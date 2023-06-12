@@ -19,7 +19,6 @@ const Login = () => {
     SignIn(email, password).then((result) => {
       const loggedUser = result.user;
       navigate(from, { replace: true });
-      console.log(loggedUser);
     });
   };
   return (

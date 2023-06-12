@@ -13,7 +13,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="flex flex-wrap place-items-center bg-opacity-30 fixed z-10  bg-black text-white">
+      <div className="flex flex-wrap place-items-center bg-opacity-30 z-10  bg-black text-white">
         <section className="mx-auto">
           {/* <!-- navbar --> */}
           <nav className="flex justify-between bg-gray-900 text-white w-screen ">

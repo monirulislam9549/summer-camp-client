@@ -9,7 +9,6 @@ const AllClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);
-        // console.log(data);
       });
   }, []);
   return (
@@ -23,7 +22,9 @@ const AllClasses = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {classes.map((classs) => (
-          <ClassCard classs={classs} key={classs._id}></ClassCard>
+          <div key={classs._id}>
+            <ClassCard classs={classs}></ClassCard>
+          </div>
         ))}
       </div>
     </section>
