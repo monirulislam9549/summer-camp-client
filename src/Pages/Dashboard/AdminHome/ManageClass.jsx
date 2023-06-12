@@ -9,7 +9,6 @@ const ManageClass = () => {
         const response = await axios.get("http://localhost:5000/classes");
         const data = response.data;
         setAllClasses(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }

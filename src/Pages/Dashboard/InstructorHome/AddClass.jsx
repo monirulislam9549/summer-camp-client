@@ -112,11 +112,12 @@ const AddClass = () => {
                 {...register("name", { required: true })}
                 className="select select-primary w-full max-w-xs "
               >
-                <option>What is the best TV show?</option>
-                <option>Game of Thrones</option>
-                <option>Lost</option>
-                <option>Breaking Bad</option>
-                <option>Walking Dead</option>
+                <option>Select Class</option>
+                <option>Hiking</option>
+                <option>Swimming</option>
+                <option>Basket Ball</option>
+                <option>Walking</option>
+                <option>Soccer</option>
               </select>
             </div>
             <div>

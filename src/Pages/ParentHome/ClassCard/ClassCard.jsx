@@ -36,24 +36,12 @@ const ClassCard = ({ classs }) => {
               confirmButtonText: "Ok",
             });
           }
-          // Swal.fire({
-          //   title: "Please Login to select classes?",
-          //   icon: "warning",
-          //   showCancelButton: true,
-          //   confirmButtonColor: "#3085d6",
-          //   cancelButtonColor: "#d33",
-          //   confirmButtonText: "Please Login Now",
-          // }).then((result) => {
-          //   if (result.isConfirmed) {
-          //     navigate("/login");
-          //   }
-          // });
         });
     }
   };
 
   return (
-    <div>
+    <div className="my-10">
       <div className="mx-auto mt-11 w-[400px] transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-md duration-300 hover:scale-105 hover:shadow-lg">
         <img
           className="h-48 w-full object-cover object-center"

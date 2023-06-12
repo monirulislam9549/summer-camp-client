@@ -1,7 +1,7 @@
 const InstructorsCard = ({ instructor }) => {
-  const { name, image, email, rating } = instructor;
+  const { name, image, email } = instructor;
   return (
-    <div>
+    <div className="mb-10">
       <div className="mx-auto mt-11 w-[400px]">
         <div className="mx-auto mt-11 w-[400px] transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-md duration-300 hover:scale-105 hover:shadow-lg">
           <img

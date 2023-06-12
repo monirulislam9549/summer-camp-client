@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [password, setPassword] = useState("");
   const { SignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,8 +21,17 @@ const Login = () => {
     // console.log(email, password);
     SignIn(email, password).then((result) => {
       const loggedUser = result.user;
+      console.log(loggedUser);
       navigate(from, { replace: true });
     });
+  };
+
+  const handleTogglePassword = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
   return (
     <>
@@ -51,18 +63,21 @@ const Login = () => {
                     required
                   />
                 </div>
-                <div className="form-control">
+                <div className="form-control relative">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
                   <input
+                    value={password}
+                    onChange={handlePasswordChange}
                     name="password"
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     placeholder="password"
                     className="input input-bordered"
                     required
                   />
                 </div>
+
                 <div className="form-control mt-6">
                   <input
                     className="btn btn-primary"
@@ -71,6 +86,16 @@ const Login = () => {
                   />
                 </div>
               </form>
+              <button
+                className="absolute inset-y-0 right-12 -top-16"
+                onClick={handleTogglePassword}
+              >
+                {passwordVisible ? (
+                  <FaRegEyeSlash></FaRegEyeSlash>
+                ) : (
+                  <FaRegEye></FaRegEye>
+                )}
+              </button>
               <p>
                 <Link to="/signup">New Here? Please Sign Up</Link>
               </p>

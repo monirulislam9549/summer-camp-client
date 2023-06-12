@@ -17,11 +17,14 @@ import AddClass from "../Pages/Dashboard/InstructorHome/AddClass";
 import MyClass from "../Pages/Dashboard/InstructorHome/MyClass";
 import ManageClass from "../Pages/Dashboard/AdminHome/ManageClass";
 import EditClass from "../Pages/Dashboard/InstructorHome/EditClass";
+import Payment from "../Pages/Dashboard/UserHome/Payment";
+import ErrorPage from "../components/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -59,8 +62,12 @@ export const router = createBrowserRouter([
         element: <MyEnrolledClass></MyEnrolledClass>,
       },
       {
-        path: "payment",
+        path: "paymentHistory",
         element: <MyPaymentHistory></MyPaymentHistory>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
 
       // Admin Route

@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const navigate = useNavigate();
+
   const { updateUserProfile, createUser } = useContext(AuthContext);
   const {
     register,
@@ -29,7 +30,7 @@ const SignUp = () => {
             email: data.email,
             photo: data.photo,
           };
-          console.log(saveUser);
+
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -52,8 +53,8 @@ const SignUp = () => {
         });
       })
       .catch((error) => console.log(error));
-    console.log(data);
   };
+
   return (
     <>
       <Helmet>
@@ -105,22 +106,66 @@ const SignUp = () => {
                     <span className="label-text">Password</span>
                   </label>
                   <input
-                    {...register("password", { required: true })}
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 8,
+                      pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                    })}
                     type="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-500">Password is required</p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-500">Password must be 6 character</p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-500">
+                      Password less than 8 character
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-500">
+                      Password must have one uppercase, one number and one
+                      special character
+                    </p>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Confirm Password</span>
                   </label>
                   <input
-                    {...register("password", { required: true })}
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 8,
+                      pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                    })}
                     type="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-500">Password is required</p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-500">Password must be 6 character</p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-500">
+                      Password less than 8 character
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-500">
+                      Password must have one uppercase, one number and one
+                      special character
+                    </p>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -132,9 +177,9 @@ const SignUp = () => {
                     //   placeholder=""
                     className="input input-bordered"
                   />
-                  {/* {errors.image && (
-                  <span className="text-red-500">Image is required</span>
-                )} */}
+                  {errors.photo && (
+                    <span className="text-red-500">Image is required</span>
+                  )}
                 </div>
                 <div className="form-control mt-6">
                   <input

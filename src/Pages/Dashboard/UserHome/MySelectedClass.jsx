@@ -3,6 +3,7 @@ import useSelect from "../../../hooks/useSelect";
 import { FcFullTrash } from "react-icons/fc";
 import { MdPayment } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [select, refetch] = useSelect();
@@ -71,10 +72,12 @@ const MySelectedClass = () => {
                 <td>${item.price}</td>
                 <td>{item.instructor}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">
-                    <MdPayment></MdPayment>
-                    Pay
-                  </button>
+                  <Link to="/dashboard/payment">
+                    <button className="btn btn-ghost btn-xs">
+                      <MdPayment></MdPayment>
+                      Pay
+                    </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(item)}
                     className="btn btn-ghost btn-md"
