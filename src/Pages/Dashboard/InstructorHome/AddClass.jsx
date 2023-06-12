@@ -1,15 +1,16 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
-const AddclassName = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
+const AddClass = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
+  const { register, handleSubmit, reset } = useForm();
+  let timerInterval;
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = (data) => {
@@ -31,10 +32,32 @@ const AddclassName = () => {
             name,
             price: parseFloat(price),
             instructor,
-            available_seats,
+            available_seats: parseFloat(available_seats),
             email,
           };
           console.log(classItem);
+          axiosSecure.post("/classes", classItem).then((data) => {
+            if (data.data.insertedId) {
+              reset();
+
+              Swal.fire({
+                title: "Auto close alert!",
+                html: "Class Uploaded in <b></b> milliseconds.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                  Swal.showLoading();
+                  const b = Swal.getHtmlContainer().querySelector("b");
+                  timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft();
+                  }, 100);
+                },
+                willClose: () => {
+                  clearInterval(timerInterval);
+                },
+              });
+            }
+          });
         }
       });
   };
@@ -48,6 +71,36 @@ const AddclassName = () => {
       <div className="max-w-2xl mx-auto bg-white p-16">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-6 mb-6 lg:grid-cols-2">
+            <div>
+              <label
+                htmlFor=""
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Instructor Name
+              </label>
+              <input
+                defaultValue={user.displayName}
+                {...register("instructor", { required: true })}
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered input-primary w-full max-w-xs"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor=""
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Instructor Email
+              </label>
+              <input
+                defaultValue={user.email}
+                {...register("email", { required: true })}
+                type="email"
+                placeholder="Type here"
+                className="input input-bordered input-primary w-full max-w-xs"
+              />
+            </div>
             <div>
               <label
                 htmlFor="first_name"
@@ -71,39 +124,11 @@ const AddclassName = () => {
                 htmlFor=""
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
-                Instructor Name
-              </label>
-              <input
-                {...register("instructor", { required: true })}
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered input-primary w-full max-w-xs"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor=""
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Instructor Email
-              </label>
-              <input
-                {...register("email", { required: true })}
-                type="email"
-                placeholder="Type here"
-                className="input input-bordered input-primary w-full max-w-xs"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor=""
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
                 Price
               </label>
               <input
                 {...register("price", { required: true })}
-                type="text"
+                type="number"
                 placeholder="Type here"
                 className="input input-bordered input-primary w-full max-w-xs"
               />
@@ -117,7 +142,7 @@ const AddclassName = () => {
               </label>
               <input
                 {...register("available_seats", { required: true })}
-                type="text"
+                type="number"
                 placeholder="Type here"
                 className="input input-bordered input-primary w-full max-w-xs"
               />
@@ -151,4 +176,4 @@ const AddclassName = () => {
   );
 };
 
-export default AddclassName;
+export default AddClass;
