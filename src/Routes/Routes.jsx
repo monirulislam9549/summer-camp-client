@@ -16,6 +16,7 @@ import InstructorRoute from "./InstructorRoute";
 import AddClass from "../Pages/Dashboard/InstructorHome/AddClass";
 import MyClass from "../Pages/Dashboard/InstructorHome/MyClass";
 import ManageClass from "../Pages/Dashboard/AdminHome/ManageClass";
+import EditClass from "../Pages/Dashboard/InstructorHome/EditClass";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ export const router = createBrowserRouter([
             <MyClass></MyClass>
           </InstructorRoute>
         ),
+      },
+      {
+        path: "editClass/:id",
+        element: <EditClass></EditClass>,
       },
     ],
   },

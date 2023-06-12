@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useInstructorClass from "../../../hooks/useInstructorClass";
 
 const MyClass = () => {
@@ -15,6 +16,7 @@ const MyClass = () => {
               <th>Image</th>
               <th>Class Name</th>
               <th>Price</th>
+              <th>Available Seats</th>
               <th>Status</th>
               <th>Total Enrolled Students</th>
               <th>Feedback</th>
@@ -33,14 +35,17 @@ const MyClass = () => {
                   </div>
                 </td>
                 <td>{data.name}</td>
-                <td></td>
+                <td>${data.price}</td>
+                <td>{data.available_seats}</td>
                 <td></td>
                 <td></td>
                 <td>
                   <button className="btn btn-sm">FeedBack</button>
                 </td>
                 <td>
-                  <button className="btn btn-sm">Update</button>
+                  <Link to={`/dashboard/editClass/${data._id}`}>
+                    <button className="btn btn-sm">Update</button>
+                  </Link>
                 </td>
               </tr>
             ))}
